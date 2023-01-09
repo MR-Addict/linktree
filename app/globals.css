@@ -11,4 +11,8 @@
   @apply py-10 md:py-16 px-5 md:px-48;
 }
 
+.title {
+  @apply font-bold text-slate-800;
+}
+
 @tailwind utilities;
