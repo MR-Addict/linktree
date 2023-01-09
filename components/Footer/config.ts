@@ -26,19 +26,14 @@ export const links: {
         link: "https://tailwindcss.com/",
         isLocal: false,
       },
-      {
-        title: "Typescript",
-        link: "https://www.typescriptlang.org/",
-        isLocal: false,
-      },
     ],
   },
   {
     head: "Resources",
     data: [
       {
-        title: "Vecel",
-        link: "https://vercel.com/docs/",
+        title: "Typescript",
+        link: "https://www.typescriptlang.org/",
         isLocal: false,
       },
       {

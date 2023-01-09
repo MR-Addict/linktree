@@ -2,7 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 
 import logo from "../../public/favicon.png";
-import Avatar from "../Avatar/Avatar";
+import Avatar from "./Avatar";
 
 export default function Navbar() {
   return (
