@@ -16,7 +16,7 @@ export const linktree: {
   }[];
 }[] = [
   {
-    head: "Website",
+    head: "Websites",
     data: [
       {
         title: "Doc-Share",

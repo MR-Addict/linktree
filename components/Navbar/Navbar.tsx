@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 
 import logo from "../../public/favicon.png";
+import Avatar from "../Avatar/Avatar";
 
 export default function Navbar() {
   return (
@@ -10,9 +11,8 @@ export default function Navbar() {
         <Image src={logo} width={35} height={35} alt='logo' />
         <h1>Linktree</h1>
       </Link>
-      <div>
-        <button className='py-1 px-4 border rounded-sm border-black hover:text-white hover:bg-black'>Login</button>
-      </div>
+      {/* @ts-expect-error Server Component */}
+      <Avatar />
     </div>
   );
 }

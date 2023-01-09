@@ -1,5 +1,3 @@
-import { BsArrowRight } from "react-icons/bs";
-
 import { linktree, linktreeItemType } from "./config";
 
 function LinktreeCard({ linktree }: { linktree: linktreeItemType }) {
