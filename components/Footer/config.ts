@@ -17,11 +17,6 @@ export const links: {
         isLocal: false,
       },
       {
-        title: "Turbopack",
-        link: "https://turbo.build/",
-        isLocal: false,
-      },
-      {
         title: "NextAuth.js",
         link: "https://next-auth.js.org/",
         isLocal: false,
@@ -41,6 +36,16 @@ export const links: {
   {
     head: "Resources",
     data: [
+      {
+        title: "Vecel",
+        link: "https://vercel.com/docs/",
+        isLocal: false,
+      },
+      {
+        title: "Turbopack",
+        link: "https://turbo.build/",
+        isLocal: false,
+      },
       {
         title: "Github Repository",
         link: "https://github.com/MR-Addict/linktree",

@@ -13,7 +13,7 @@ export default function Footer() {
         {links.map((item1, index1) => (
           <div key={index1} className='flex flex-col gap-5'>
             <h1>{item1.head}</h1>
-            <div className='flex flex-col gap-2'>
+            <div className='flex flex-col gap-1'>
               {item1.data.map((item2, index2) => (
                 <LinkCard item={item2} key={index2} />
               ))}
