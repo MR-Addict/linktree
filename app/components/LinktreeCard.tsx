@@ -21,7 +21,7 @@ export default async function LinktreeCard({ linktree }: { linktree: linktreeIte
   return (
     <div className='flex flex-col gap-2'>
       <h1 className='text-3xl font-bold w-fit'>{linktree.head}</h1>
-      <div className='grid gap-5 grid-cols-1 md:grid-cols-3'>
+      <div className='grid gap-7 grid-cols-1 md:grid-cols-3'>
         {linktree.data.map((item, index) => (
           <a
             href={item.link}
@@ -30,11 +30,11 @@ export default async function LinktreeCard({ linktree }: { linktree: linktreeIte
             className='flex flex-col gap-1 border border-gray-300 rounded-md p-2 hover:shadow-2xl duration-300 group relative'
           >
             <div className='w-full flex flex-row items-center justify-between'>
-              <div className='title text-xl'>{item.title}</div>
+              <div className='font-bold text-slate-800 text-xl'>{item.title}</div>
               {session && <Edit />}
             </div>
             <div className='w-fit'>{item.detail}</div>
-            <div className='text-theme hover:underline'>Learn More →</div>
+            <div className='text-blue-600 hover:underline'>Learn More →</div>
           </a>
         ))}
       </div>

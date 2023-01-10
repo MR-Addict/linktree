@@ -31,7 +31,16 @@ export default function Footer() {
         </div>
       </div>
       <MobileFooter />
-      <span>Copyright &copy; {new Date().getFullYear()}. All rights reserved.</span>
+      <div className='flex flex-row gap-1'>
+        <div>Copyright &copy; {new Date().getFullYear()}.</div>
+        <div>
+          <span>Powered by</span>
+          <a href='https://vercel.com/' target='_blank' className='underline text-gray-800 ml-1'>
+            vercel
+          </a>
+          <span>.</span>
+        </div>
+      </div>
     </footer>
   );
 }
