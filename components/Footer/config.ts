@@ -17,13 +17,18 @@ export const links: {
         isLocal: false,
       },
       {
-        title: "NextAuth.js",
-        link: "https://next-auth.js.org/",
+        title: "Typescript",
+        link: "https://www.typescriptlang.org/",
         isLocal: false,
       },
       {
         title: "Tailwindcss",
         link: "https://tailwindcss.com/",
+        isLocal: false,
+      },
+      {
+        title: "NextAuth.js",
+        link: "https://next-auth.js.org/",
         isLocal: false,
       },
     ],
@@ -32,13 +37,18 @@ export const links: {
     head: "Resources",
     data: [
       {
-        title: "Typescript",
-        link: "https://www.typescriptlang.org/",
+        title: "Vercel",
+        link: "https://vercel.com/",
         isLocal: false,
       },
       {
         title: "Turbopack",
         link: "https://turbo.build/",
+        isLocal: false,
+      },
+      {
+        title: "Mongodb Atlas",
+        link: "https://www.mongodb.com/atlas/database",
         isLocal: false,
       },
       {

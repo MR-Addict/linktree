@@ -4,9 +4,10 @@
 
 - [x] Next.js 13
 - [x] Nextauth.js
-- [x] Turbopack
+- [ ] Turbopack
 - [x] Typescript
 - [x] Tailwindcss
+- [x] Mongodb Altas
 
 ## 2. Development
 

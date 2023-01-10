@@ -33,7 +33,7 @@ export default function Logout() {
         <div className='flex flex-col gap-2'>
           {isLoginFailed && (
             <div className='bg-red-100 p-1 rounded-sm flex flex-row items-center relative'>
-              <h1 className='w-full font-semibold text-center text-red-900'>Login Failed</h1>
+              <h1 className='w-full font-semibold text-center text-red-900'>Username or Password incorrect!</h1>
               <button
                 onClick={() => setIsLoginFailed(false)}
                 className='bg-red-900 text-white p-1 rounded-full absolute right-2'

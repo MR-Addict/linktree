@@ -33,10 +33,14 @@ export default function Footer() {
       <MobileFooter />
       <div className='flex flex-row gap-1'>
         <div>Copyright &copy; {new Date().getFullYear()}.</div>
-        <div>
+        <div className='flex flex-row gap-1'>
           <span>Powered by</span>
-          <a href='https://vercel.com/' target='_blank' className='underline text-gray-800 ml-1'>
+          <a href='https://vercel.com/' target='_blank' className='underline text-gray-800'>
             vercel
+          </a>
+          <span>&</span>
+          <a href='https://www.mongodb.com/atlas/database' target='_blank' className='underline text-gray-800'>
+            mongodb
           </a>
           <span>.</span>
         </div>
