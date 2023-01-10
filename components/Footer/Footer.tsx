@@ -31,8 +31,8 @@ export default function Footer() {
         </div>
       </div>
       <MobileFooter />
-      <div className='flex flex-row gap-1'>
-        <div>Copyright &copy; {new Date().getFullYear()}.</div>
+      <div className='flex flex-col md:flex-row gap-1 md:gap-4'>
+        <div>Copyright &copy; {new Date().getFullYear()}. All rights reserved.</div>
         <div className='flex flex-row gap-1'>
           <span>Powered by</span>
           <a href='https://vercel.com/' target='_blank' className='underline text-gray-800'>

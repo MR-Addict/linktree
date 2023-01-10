@@ -15,9 +15,6 @@ export default function Logout() {
   const [formData, setFormData] = useState({ username: "", password: "" });
   const [isLoginFailed, setIsLoginFailed] = useState(errorLoginMsg !== null);
 
-  const onUpdateInput = (event: React.ChangeEvent<HTMLInputElement>) =>
-    setFormData({ ...formData, [event.target.name]: event.target.value });
-
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     await signIn("credentials", {
@@ -58,7 +55,7 @@ export default function Logout() {
               maxLength={100}
               placeholder='Username'
               value={formData.username}
-              onChange={onUpdateInput}
+              onChange={(e) => setFormData({ ...formData, [e.target.name]: e.target.value })}
               className='p-2 rounded-sm border border-black outline-none'
             />
           </div>
@@ -75,7 +72,7 @@ export default function Logout() {
               maxLength={100}
               placeholder='Password'
               value={formData.password}
-              onChange={onUpdateInput}
+              onChange={(e) => setFormData({ ...formData, [e.target.name]: e.target.value })}
               className='p-2 rounded-sm border border-black outline-none'
             />
           </div>

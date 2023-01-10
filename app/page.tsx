@@ -3,18 +3,15 @@ import LinktreeCard from "./LinktreeCard";
 
 export default async function Page() {
   const mongodb = new Mongodb();
-  const heads = await mongodb.getHeads();
+  const links = await mongodb.getLinks();
 
-  if (heads.status && heads.data) {
+  if (links.data)
     return (
       <div className='frame flex flex-col gap-10'>
-        {heads.data.map((item, index) => (
+        {links.data.map((item, index) => (
           //  @ts-expect-error Server Component
-          <LinktreeCard key={index} head={item} />
+          <LinktreeCard key={index} head={item._id} links={item.data} />
         ))}
       </div>
     );
-  } else {
-    throw new Error(heads.message);
-  }
 }
