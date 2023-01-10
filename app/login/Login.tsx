@@ -80,7 +80,7 @@ export default function Logout() {
           <div className='w-full flex flex-row gap-3'>
             <button
               type='button'
-              onClick={() => router.replace(callbackUrl)}
+              onClick={() => router.push(callbackUrl)}
               className='w-full py-2 rounded-sm border border-black hover:shadow-md'
             >
               Cancel

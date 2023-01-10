@@ -1,3 +1,4 @@
+import { ObjectId } from "mongodb";
 import clientPromise from "./clientPromise";
 
 class Mongodb {
@@ -51,6 +52,34 @@ class Mongodb {
       const result = await db.collection("links").insertOne(link);
       if (result.acknowledged) return { status: true, message: "New link insert success!" };
       else return { status: false, message: "Cannot insert new link!" };
+    } catch (error) {
+      return { status: false, message: "Cannot establish connection with mongodb!" };
+    }
+  }
+
+  async updatelink(_id: string, head: string, title: string, link: string, intro: string) {
+    try {
+      const client = await clientPromise;
+      const db = client.db("linktree");
+      const result = await db
+        .collection("links")
+        .updateOne({ _id: new ObjectId(_id) }, { $set: { head, title, link, intro } });
+      if (result.modifiedCount > 0) return { status: true, message: "Link update success!" };
+      else return { status: false, message: "Cannot update link!" };
+    } catch (error) {
+      return { status: false, message: "Cannot establish connection with mongodb!" };
+    }
+  }
+
+  async deletelink(link: { _id: string }) {
+    try {
+      const client = await clientPromise;
+      const db = client.db("linktree");
+      const result = await db.collection("links").deleteOne({
+        _id: new ObjectId(link._id),
+      });
+      if (result.deletedCount > 0) return { status: true, message: "Link delete success!" };
+      else return { status: false, message: "Cannot delete link!" };
     } catch (error) {
       return { status: false, message: "Cannot establish connection with mongodb!" };
     }
