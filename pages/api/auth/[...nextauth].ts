@@ -25,7 +25,7 @@ export const authOptions: NextAuthOptions = {
           password: string;
         };
         const mongodb = new Mongodb();
-        const user = await mongodb.findUser(username, password);
+        const user = await mongodb.finduser(username, password);
         if (user.status && user.data) return user.data;
         else return null;
       },

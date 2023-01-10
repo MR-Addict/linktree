@@ -3,7 +3,7 @@ import LinktreeCard from "./LinktreeCard";
 
 export default async function Page() {
   const mongodb = new Mongodb();
-  const links = await mongodb.getLinks();
+  const links = await mongodb.getlinks();
 
   if (links.data)
     return (

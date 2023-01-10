@@ -1,22 +1,41 @@
 "use client";
 
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
-import { FaShareSquare, FaRegFlag, FaEdit } from "react-icons/fa";
+import { FaShareSquare, FaRegListAlt, FaRegFlag, FaEdit } from "react-icons/fa";
 
 export default function Add() {
+  const router = useRouter();
+
   const [isValid, setIsValid] = useState(false);
-  const [formData, setFormData] = useState({ title: "", link: "", intro: "" });
+  const [formData, setFormData] = useState({ head: "", title: "", link: "", intro: "" });
 
   useEffect(() => {
-    if (formData.title === "" || formData.link === "" || formData.intro === "") setIsValid(false);
+    if (formData.head === "" || formData.title === "" || formData.link === "" || formData.intro === "")
+      setIsValid(false);
     else setIsValid(true);
   }, [formData]);
+
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    fetch("/api/insertlink", {
+      method: "POST",
+      body: new URLSearchParams(formData),
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (!data.status) console.log(data.message);
+        setFormData({ head: "", title: "", link: "", intro: "" });
+      })
+      .catch((error) => console.error(error));
+  };
 
   return (
     <div className='frame w-full flex flex-col gap-4'>
       <h1 className='text-slate-800 text-3xl font-bold'>New Link</h1>
-      <form className='flex flex-col gap-5'>
+      <form onSubmit={handleSubmit} className='flex flex-col gap-5'>
         <div className='flex flex-col w-full gap-1'>
           <label htmlFor='title' className='flex flex-row items-center gap-1 text-gray-700 font-semibold'>
             <FaRegFlag />
@@ -52,6 +71,23 @@ export default function Add() {
         </div>
 
         <div className='flex flex-col w-full gap-1'>
+          <label htmlFor='head' className='flex flex-row items-center gap-1 text-gray-700 font-semibold'>
+            <FaRegListAlt />
+            <span>Category</span>
+          </label>
+          <input
+            required
+            type='text'
+            name='head'
+            maxLength={100}
+            placeholder='Category'
+            value={formData.head}
+            onChange={(e) => setFormData({ ...formData, [e.target.name]: e.target.value })}
+            className='p-2 rounded-sm border border-black outline-none'
+          />
+        </div>
+
+        <div className='flex flex-col w-full gap-1'>
           <label htmlFor='Link' className='flex flex-row items-center gap-1 text-gray-700 font-semibold'>
             <FaEdit />
             <span>Introduction</span>
@@ -68,9 +104,13 @@ export default function Add() {
         </div>
 
         <div className='w-full flex flex-row justify-end gap-3'>
-          <Link href='/' className='py-2 px-4 rounded-sm border border-black hover:shadow-md'>
-            Cancel
-          </Link>
+          <button
+            type='button'
+            onClick={() => router.replace("/")}
+            className='py-2 px-4 rounded-sm border border-black hover:shadow-md'
+          >
+            Return
+          </button>
           {isValid ? (
             <button
               type='submit'

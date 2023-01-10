@@ -1,0 +1,25 @@
+import { unstable_getServerSession } from "next-auth/next";
+import type { NextApiRequest, NextApiResponse } from "next";
+
+import { Mongodb } from "../../lib/mongodb";
+import { authOptions } from "./auth/[...nextauth]";
+
+export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+  const session = await unstable_getServerSession(req, res, authOptions);
+  if (!session) return res.status(403).json({ status: false, message: "You have no access!" });
+
+  const mongodb = new Mongodb();
+  if (req.method !== "POST") {
+    return res.setHeader("Allow", ["POST"]).status(425).end(`Method ${req.method} is not allowed!`);
+  }
+  if (!req.body.head || !req.body.title || !req.body.link || !req.body.intro)
+    return res.status(412).json({ status: false, message: "Needed request body is empty!" });
+  const response = await mongodb.insertlink({
+    head: req.body.head,
+    title: req.body.title,
+    link: req.body.link,
+    intro: req.body.intro,
+  });
+  if (response.status) return res.status(200).json(response);
+  else return res.status(500).json(response);
+}
