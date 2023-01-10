@@ -35,10 +35,11 @@ export default function Logout() {
             <div className='bg-red-100 p-1 rounded-sm flex flex-row items-center relative'>
               <h1 className='w-full font-semibold text-center text-red-900'>Username or Password incorrect!</h1>
               <button
+                type='button'
                 onClick={() => setIsLoginFailed(false)}
                 className='bg-red-900 text-white p-1 rounded-full absolute right-2'
               >
-                <RxCross1 size={10} />
+                <RxCross1 size={8} />
               </button>
             </div>
           )}

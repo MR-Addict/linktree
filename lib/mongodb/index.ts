@@ -1,1 +1,1 @@
-export { default as findUser } from "./findUser";
+export { default as Mongodb } from "./mongodb";
