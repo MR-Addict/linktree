@@ -7,7 +7,7 @@ import { authOptions } from "../../pages/api/auth/[...nextauth]";
 function Edit() {
   return (
     <a
-      href='/home'
+      href='/edit'
       className='opacity-0 group-hover:opacity-100 duration-300 absolute -right-3 -top-3 p-2 rounded-full border border-black bg-black text-white hover:bg-white hover:text-black'
     >
       <AiFillEdit />
