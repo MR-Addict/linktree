@@ -38,7 +38,7 @@ export default function Edit() {
 
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    fetch("/api/updatelink", {
+    fetch("/api/linktree/update", {
       method: "POST",
       // @ts-expect-error
       body: new URLSearchParams(formData),
@@ -54,7 +54,7 @@ export default function Edit() {
   }
 
   async function handleDelete() {
-    fetch("/api/deletelink", {
+    fetch("/api/linktree/delete", {
       method: "POST",
       // @ts-expect-error
       body: new URLSearchParams({ _id: formData._id }),

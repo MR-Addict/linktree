@@ -22,7 +22,7 @@ export default function Add() {
 
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    fetch("/api/insertlink", {
+    fetch("/api/linktree/insert", {
       method: "POST",
       body: new URLSearchParams(formData),
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
