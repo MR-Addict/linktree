@@ -21,6 +21,7 @@ export default function Add() {
 
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
+    setIsValid(false);
     fetch("/api/linktree/insert", {
       method: "POST",
       body: new URLSearchParams(formData),

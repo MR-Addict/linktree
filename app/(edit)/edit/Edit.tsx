@@ -38,6 +38,7 @@ export default function Edit() {
 
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
+    setIsValid(false);
     fetch("/api/linktree/update", {
       method: "POST",
       // @ts-expect-error
@@ -47,10 +48,14 @@ export default function Edit() {
       .then((res) => res.json())
       .then((data) => {
         if (!data.status) console.error(data.message);
+        setIsValid(true);
         setIsPopup(true);
         setPopupData(data);
       })
-      .catch((error) => console.error(error));
+      .catch((error) => {
+        setIsValid(true);
+        console.error(error);
+      });
   }
 
   async function handleDelete() {

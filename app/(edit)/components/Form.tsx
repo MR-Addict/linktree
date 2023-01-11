@@ -16,6 +16,23 @@ export default function Form({
   return (
     <form onSubmit={handleSubmit} className='flex flex-col gap-5'>
       <div className='flex flex-col w-full gap-1'>
+        <label htmlFor='head' className='flex flex-row items-center gap-1 text-gray-700 font-semibold'>
+          <FaRegListAlt />
+          <span>Category</span>
+        </label>
+        <input
+          required
+          type='text'
+          name='head'
+          maxLength={100}
+          placeholder='Category'
+          value={formData.head}
+          onChange={(e) => setFormData({ ...formData, [e.target.name]: e.target.value })}
+          className='p-2 rounded-sm border border-black outline-none'
+        />
+      </div>
+
+      <div className='flex flex-col w-full gap-1'>
         <label htmlFor='title' className='flex flex-row items-center gap-1 text-gray-700 font-semibold'>
           <FaRegFlag />
           <span>Title</span>
@@ -50,23 +67,6 @@ export default function Form({
       </div>
 
       <div className='flex flex-col w-full gap-1'>
-        <label htmlFor='head' className='flex flex-row items-center gap-1 text-gray-700 font-semibold'>
-          <FaRegListAlt />
-          <span>Category</span>
-        </label>
-        <input
-          required
-          type='text'
-          name='head'
-          maxLength={100}
-          placeholder='Category'
-          value={formData.head}
-          onChange={(e) => setFormData({ ...formData, [e.target.name]: e.target.value })}
-          className='p-2 rounded-sm border border-black outline-none'
-        />
-      </div>
-
-      <div className='flex flex-col w-full gap-1'>
         <label htmlFor='Link' className='flex flex-row items-center gap-1 text-gray-700 font-semibold'>
           <FaEdit />
           <span>Introduction</span>
@@ -74,7 +74,7 @@ export default function Form({
         <textarea
           required
           name='intro'
-          maxLength={100}
+          maxLength={500}
           placeholder='Introduction'
           value={formData.intro}
           onChange={(e) => setFormData({ ...formData, [e.target.name]: e.target.value })}
