@@ -1,6 +1,10 @@
 # Linktree Clone
 
-## 1. Frameworks
+## 1. Preview
+
+![preview](./images/preview.png)
+
+## 2. Frameworks
 
 - [x] Next.js 13
 - [ ] Turbopack
@@ -9,7 +13,7 @@
 - [x] Tailwindcss
 - [x] Mongodb Altas
 
-## 2. Development
+## 3. Development
 
 Install packages:
 
@@ -23,7 +27,7 @@ Run dev:
 npm run dev
 ```
 
-## 3. Deploy
+## 4. Deploy
 
 Install packages:
 

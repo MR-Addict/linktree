@@ -20,23 +20,27 @@ export default async function LinktreeCard({ head, links }: { head: string; link
   const session = await unstable_getServerSession(authOptions);
 
   return (
-    <div className='flex flex-col gap-2'>
+    <div className='flex flex-col gap-3'>
       <h1 className='text-3xl font-bold w-fit'>{head}</h1>
-      <div className='grid gap-7 grid-cols-1 md:grid-cols-3'>
+      <div className='grid gap-7 grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'>
         {links.map((item, index) => (
-          <a
-            href={item.link}
-            target='_blank'
+          <div
             key={index}
-            className='flex flex-col justify-between gap-1 border border-gray-300 rounded-md p-2 hover:shadow-2xl duration-300 group relative'
+            className='flex flex-col items-center justify-between gap-3 border border-gray-300 rounded-md py-7 px-5 shadow-md hover:shadow-2xl duration-300 group relative cursor-pointer'
           >
-            <div className='w-full flex flex-col gap-1'>
-              <div className='font-bold text-slate-800 text-xl'>{item.title}</div>
+            <div className='w-full flex flex-col gap-3'>
+              <h1 className='font-bold text-2xl text-center'>{item.title}</h1>
               {session && <Edit link={item} />}
               <div className='w-fit'>{item.intro}</div>
             </div>
-            <div className='text-blue-600 hover:underline'>Learn More →</div>
-          </a>
+            <a
+              href={item.link}
+              target='_blank'
+              className='w-full rounded-md text-center py-1 border duration-300 border-black text-white bg-black hover:bg-white hover:text-black'
+            >
+              Learn More →
+            </a>
+          </div>
         ))}
       </div>
     </div>
