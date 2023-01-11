@@ -4,11 +4,7 @@ import Edit from "./Edit";
 import { Inform } from "../../components";
 import { authOptions } from "../../../pages/api/auth/[...nextauth]";
 
-export default async function Page({
-  searchParams,
-}: {
-  searchParams: { _id: string; head: string; title: string; link: string; intro: string };
-}) {
+export default async function Page({ searchParams }: any) {
   const session = await unstable_getServerSession(authOptions);
 
   if (!session) return <Inform title="You haven't logged in, please login first!" />;
