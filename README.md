@@ -3,8 +3,8 @@
 ## 1. Frameworks
 
 - [x] Next.js 13
-- [x] Nextauth.js
 - [ ] Turbopack
+- [x] Nextauth.js
 - [x] Typescript
 - [x] Tailwindcss
 - [x] Mongodb Altas

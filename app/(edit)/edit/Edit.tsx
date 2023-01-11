@@ -4,7 +4,8 @@ import { useSearchParams } from "next/navigation";
 import { useState, useEffect } from "react";
 
 import Buttons from "./Buttons";
-import { Form, Popup } from "../components";
+import { Form } from "../components";
+import { Popup } from "../../components";
 
 export default function Edit() {
   const searchParams = useSearchParams();
@@ -77,10 +78,8 @@ export default function Edit() {
 
   return (
     <div className='frame w-full flex flex-col gap-4'>
-      <div className='flex flex-col md:flex-row gap-4'>
-        <h1 className='text-slate-800 text-3xl font-bold'>Edit Link</h1>
-        {isPopup && <Popup popupData={popupData} setPopupData={setPopupData} setIsPopup={setIsPopup} />}
-      </div>
+      <Popup popupData={popupData} isPopup={isPopup} setIsPopup={setIsPopup} />
+      <h1 className='text-slate-800 text-3xl font-bold'>Edit Link</h1>
       {/* @ts-expect-error */}
       <Form formData={formData} setFormData={setFormData} handleSubmit={handleSubmit}>
         <Buttons isValid={isValid} handleDelete={handleDelete} />

@@ -3,7 +3,7 @@
 import { useEffect } from "react";
 import { IoMdRefresh } from "react-icons/io";
 
-export default function Error({ error, reset }) {
+export default function Error({ error, reset }: { error: Error; reset: () => void }) {
   useEffect(() => {
     console.error(error);
   }, [error]);

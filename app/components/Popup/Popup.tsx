@@ -5,31 +5,33 @@ import { RxCross1 } from "react-icons/rx";
 
 export default function Popup({
   popupData,
-  setPopupData,
+  isPopup,
   setIsPopup,
 }: {
   popupData: { status: boolean; message: string };
-  setPopupData: Function;
+  isPopup: boolean;
   setIsPopup: Function;
 }) {
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsPopup(false);
-      setPopupData({ status: true, message: "" });
     }, 5000);
     return () => clearTimeout(timer);
   }, [popupData]);
 
   return (
-    <>
+    <div
+      className={`fixed -top-10 left-[50%] translate-x-[-50%] duration-500 ${
+        isPopup ? "translate-y-20" : "translate-y-0"
+      }`}
+    >
       {popupData.status ? (
         <div className='bg-green-100 px-4 py-1 rounded-sm flex flex-row items-center gap-2 w-fit'>
-          <h1 className='w-full font-semibold text-center text-green-900'>{popupData.message}</h1>
+          <h1 className='font-semibold whitespace-nowrap text-green-900'>{popupData.message}</h1>
           <button
             type='button'
             onClick={() => {
               setIsPopup(false);
-              setPopupData({ status: true, message: "" });
             }}
             className='bg-green-900 text-white p-1 rounded-full'
           >
@@ -38,12 +40,11 @@ export default function Popup({
         </div>
       ) : (
         <div className='bg-red-100 px-4 py-1 rounded-sm flex flex-row items-center gap-2 w-fit'>
-          <h1 className='w-full font-semibold text-center text-red-900'>{popupData.message}</h1>
+          <h1 className='font-semibold whitespace-nowrap text-red-900'>{popupData.message}</h1>
           <button
             type='button'
             onClick={() => {
               setIsPopup(false);
-              setPopupData({ status: true, message: "" });
             }}
             className='bg-red-900 text-white p-1 rounded-full'
           >
@@ -51,6 +52,6 @@ export default function Popup({
           </button>
         </div>
       )}
-    </>
+    </div>
   );
 }

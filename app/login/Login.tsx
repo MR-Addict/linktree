@@ -1,10 +1,11 @@
 "use client";
 
-import { useState, useEffect } from "react";
 import { signIn } from "next-auth/react";
-import { RxCross1 } from "react-icons/rx";
+import { useState, useEffect } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { FaUserAlt, FaLock } from "react-icons/fa";
+
+import { Popup } from "../components";
 
 export default function Logout() {
   const router = useRouter();
@@ -34,21 +35,12 @@ export default function Logout() {
   return (
     <div className='frame w-full flex flex-col items-center justify-center'>
       <form onSubmit={handleSubmit} className='w-full max-w-xs flex flex-col gap-4'>
-        <div className='flex flex-col gap-2'>
-          {isLoginFailed && (
-            <div className='bg-red-100 p-1 rounded-sm flex flex-row items-center relative'>
-              <h1 className='w-full font-semibold text-center text-red-900'>Username or Password incorrect!</h1>
-              <button
-                type='button'
-                onClick={() => setIsLoginFailed(false)}
-                className='bg-red-900 text-white p-1 rounded-full absolute right-2'
-              >
-                <RxCross1 size={8} />
-              </button>
-            </div>
-          )}
-          <h1 className='text-slate-700 font-bold text-4xl text-center'>Login</h1>
-        </div>
+        <Popup
+          popupData={{ status: false, message: "Usernamer or Password incorrect!" }}
+          isPopup={isLoginFailed}
+          setIsPopup={setIsLoginFailed}
+        />
+        <h1 className='text-slate-700 font-bold text-4xl text-center'>Login</h1>
         <div className='flex flex-col gap-6'>
           <div className='flex flex-col w-full gap-1'>
             <label htmlFor='username' className='flex flex-row items-center gap-2 text-gray-700 font-semibold'>
