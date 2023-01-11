@@ -6,7 +6,7 @@ import Avatar from "./Avatar";
 
 export default function Navbar() {
   return (
-    <div className='flex flex-row items-center justify-between px-5 md:px-48 pt-5 md:pt-10'>
+    <div className='w-full flex flex-row items-center justify-between px-5 md:px-48 pt-5 md:pt-10'>
       <Link href='/' className='text-2xl font-bold text-gray-500 italic flex flex-row items-end justify-center gap-2'>
         <Image src={logo} width={35} height={35} alt='logo' />
         <h1>Linktree</h1>

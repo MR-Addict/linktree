@@ -6,7 +6,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang='en'>
       <head />
-      <body className='min-h-screen flex flex-col justify-between'>
+      <body className='min-h-screen flex flex-col items-center justify-between'>
         <NextauthProvider>
           <Navbar />
           {children}
