@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { signIn } from "next-auth/react";
 import { RxCross1 } from "react-icons/rx";
 import { useRouter, useSearchParams } from "next/navigation";
@@ -23,6 +23,13 @@ export default function Logout() {
       callbackUrl: callbackUrl,
     });
   };
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoginFailed(false);
+    }, 5000);
+    return () => clearTimeout(timer);
+  }, [isLoginFailed]);
 
   return (
     <div className='frame w-full flex flex-col items-center justify-center'>

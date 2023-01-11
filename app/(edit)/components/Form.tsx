@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { FaShareSquare, FaRegListAlt, FaRegFlag, FaEdit } from "react-icons/fa";
 
 export default function Form({
@@ -13,6 +14,18 @@ export default function Form({
   handleSubmit: (event: React.FormEvent<HTMLFormElement>) => void;
   children: React.ReactNode;
 }) {
+  const [availableOptions, setAvailableOptions] = useState([]);
+
+  useEffect(() => {
+    fetch("/api/linktree/heads")
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.status) setAvailableOptions(data.data);
+        else console.error(data.message);
+      })
+      .catch((error) => console.error(error));
+  }, []);
+
   return (
     <form onSubmit={handleSubmit} className='flex flex-col gap-5'>
       <div className='flex flex-col w-full gap-1'>
@@ -22,6 +35,7 @@ export default function Form({
         </label>
         <input
           required
+          list='head'
           type='text'
           name='head'
           maxLength={100}
@@ -30,6 +44,11 @@ export default function Form({
           onChange={(e) => setFormData({ ...formData, [e.target.name]: e.target.value })}
           className='p-2 rounded-sm border border-black outline-none'
         />
+        <datalist id='head'>
+          {availableOptions.map((item, index) => (
+            <option key={index}>{item}</option>
+          ))}
+        </datalist>
       </div>
 
       <div className='flex flex-col w-full gap-1'>

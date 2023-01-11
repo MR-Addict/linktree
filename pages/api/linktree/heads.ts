@@ -13,6 +13,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   if (!session) return res.json({ status: false, message: "You have no access!" });
 
   const mongodb = new Mongodb();
-  const response = await mongodb.getlinks();
+  const response = await mongodb.getheads();
   return res.json(response);
 }

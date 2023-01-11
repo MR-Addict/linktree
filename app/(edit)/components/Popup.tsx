@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect } from "react";
 import { RxCross1 } from "react-icons/rx";
 
 export default function Popup({
@@ -11,6 +12,14 @@ export default function Popup({
   setPopupData: Function;
   setIsPopup: Function;
 }) {
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsPopup(false);
+      setPopupData({ status: true, message: "" });
+    }, 5000);
+    return () => clearTimeout(timer);
+  }, [popupData]);
+
   return (
     <>
       {popupData.status ? (

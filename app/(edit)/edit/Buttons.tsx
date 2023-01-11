@@ -36,14 +36,14 @@ export default function Buttons({
             type='submit'
             className='py-2 px-4 rounded-sm border hover:shadow-md bg-black text-white hover:bg-white hover:text-black border-black'
           >
-            Confirm
+            Update
           </button>
         ) : (
           <button
             disabled
             className='py-2 px-4 rounded-sm border hover:shadow-md cursor-not-allowed bg-black text-white border-black'
           >
-            Confirm
+            Update
           </button>
         )}
       </div>
