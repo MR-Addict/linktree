@@ -1,7 +1,7 @@
 import { unstable_getServerSession } from "next-auth/next";
 
 import Edit from "./Edit";
-import { authOptions } from "../../pages/api/auth/[...nextauth]";
+import { authOptions } from "../../../pages/api/auth/[...nextauth]";
 
 export default async function Page() {
   const session = await unstable_getServerSession(authOptions);
