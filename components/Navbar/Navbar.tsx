@@ -7,9 +7,9 @@ import Avatar from "./Avatar";
 export default function Navbar() {
   return (
     <div className='w-full flex flex-row items-center justify-between px-5 md:px-48 pt-5 md:pt-10'>
-      <Link href='/' className='text-2xl font-bold text-gray-500 italic flex flex-row items-end justify-center gap-2'>
+      <Link href='/' className='flex flex-row items-end justify-center gap-2'>
         <Image src={logo} width={35} height={35} alt='logo' />
-        <h1>Linktree</h1>
+        <h1 className='text-2xl font-bold italic'>Linktree</h1>
       </Link>
       {/* @ts-expect-error Server Component */}
       <Avatar />
