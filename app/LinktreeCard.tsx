@@ -9,7 +9,7 @@ function Edit({ link }: { link: linktreeItemType }) {
   return (
     <Link
       href={{ pathname: "/edit", query: { ...link, _id: link._id.toString() } }}
-      className='scale-0 group-hover:scale-100 duration-200 absolute -right-3 -top-3 p-2 rounded-full border border-black bg-black text-white hover:bg-white hover:text-black'
+      className='opacity-0 translate-x-0 translate-y-0 group-hover:opacity-100 group-hover:translate-x-3 group-hover:-translate-y-3 duration-200 absolute right-0 top-0 p-2 rounded-full border border-black bg-black text-white hover:bg-white hover:text-black'
     >
       <AiFillEdit />
     </Link>
