@@ -1,35 +1,21 @@
 "use client";
 
-import { useSearchParams } from "next/navigation";
 import { useState, useEffect } from "react";
 
 import Buttons from "./Buttons";
 import { Form } from "../components";
 import { Popup } from "../../components";
 
-export default function Edit() {
-  const searchParams = useSearchParams();
-
-  let formParams = {
-    _id: searchParams.get("_id"),
-    head: searchParams.get("head"),
-    title: searchParams.get("title"),
-    link: searchParams.get("link"),
-    intro: searchParams.get("intro"),
-  };
-
-  if (!formParams._id || !formParams.head || !formParams.title || !formParams.link || !formParams.intro)
-    return (
-      <div className='frame w-full flex flex-col items-center justify-center gap-2'>
-        <h1>You cannot directly visit this page!</h1>
-      </div>
-    );
-
+export default function Edit({
+  initFormData,
+}: {
+  initFormData: { _id: string; head: string; title: string; link: string; intro: string };
+}) {
   const [isPopup, setIsPopup] = useState(false);
   const [popupData, setPopupData] = useState({ status: true, message: "" });
 
   const [isValid, setIsValid] = useState(false);
-  const [formData, setFormData] = useState(formParams);
+  const [formData, setFormData] = useState(initFormData);
 
   useEffect(() => {
     if (formData.head === "" || formData.title === "" || formData.link === "" || formData.intro === "")
@@ -42,7 +28,6 @@ export default function Edit() {
     setIsValid(false);
     fetch("/api/linktree/update", {
       method: "POST",
-      // @ts-expect-error
       body: new URLSearchParams(formData),
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
     })
@@ -62,7 +47,6 @@ export default function Edit() {
   async function handleDelete() {
     fetch("/api/linktree/delete", {
       method: "POST",
-      // @ts-expect-error
       body: new URLSearchParams({ _id: formData._id }),
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
     })
@@ -80,7 +64,6 @@ export default function Edit() {
     <div className='frame w-full flex flex-col gap-4'>
       <Popup popupData={popupData} isPopup={isPopup} setIsPopup={setIsPopup} />
       <h1 className='text-slate-800 text-3xl font-bold'>Edit Link</h1>
-      {/* @ts-expect-error */}
       <Form formData={formData} setFormData={setFormData} handleSubmit={handleSubmit}>
         <Buttons isValid={isValid} handleDelete={handleDelete} />
       </Form>
