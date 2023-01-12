@@ -1,28 +1,47 @@
 "use client";
 
 import { signIn } from "next-auth/react";
-import { useState, useEffect } from "react";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
+import { useState, useEffect, useRef } from "react";
 import { FaUserAlt, FaLock } from "react-icons/fa";
 
-import { Popup } from "../components";
+import { Popup } from "../";
 
-export default function Logout() {
+export default function Login({ setIsOpenForm }: { setIsOpenForm: Function }) {
   const router = useRouter();
-  const searchParams = useSearchParams();
-  const errorLoginMsg = searchParams.get("error");
-  const callbackUrl = searchParams.get("callbackUrl") || "/";
+  const openFormRef = useRef<HTMLFormElement>(null);
 
+  const [isLoginFailed, setIsLoginFailed] = useState(false);
   const [formData, setFormData] = useState({ username: "", password: "" });
-  const [isLoginFailed, setIsLoginFailed] = useState(errorLoginMsg !== null);
+
+  const handleClickOutside = (event: MouseEvent) => {
+    const target = event.target as HTMLElement;
+    if (openFormRef.current && !openFormRef.current.contains(target)) {
+      setIsOpenForm(false);
+      document.body.style.overflow = "auto";
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener("click", handleClickOutside);
+    return () => {
+      document.removeEventListener("click", handleClickOutside);
+    };
+  }, []);
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    await signIn("credentials", {
+    const res = await signIn("credentials", {
       username: formData.username,
       password: formData.password,
-      callbackUrl: callbackUrl,
+      redirect: false,
     });
+    if (res && !res.ok) setIsLoginFailed(true);
+    else {
+      setIsOpenForm(false);
+      document.body.style.overflow = "auto";
+      router.refresh();
+    }
   };
 
   useEffect(() => {
@@ -33,8 +52,12 @@ export default function Logout() {
   }, [isLoginFailed]);
 
   return (
-    <div className='frame w-full flex flex-col items-center justify-center'>
-      <form onSubmit={handleSubmit} className='w-full max-w-xs flex flex-col gap-4'>
+    <div className='z-10 fixed top-0 left-0 frame w-full h-full flex flex-col items-center justify-center bg-black/40'>
+      <form
+        onSubmit={handleSubmit}
+        ref={openFormRef}
+        className='w-full md:max-w-xs flex flex-col gap-4 rounded-md bg-white p-5 md:p-10'
+      >
         <Popup
           popupData={{ status: false, message: "Usernamer or Password incorrect!" }}
           isPopup={isLoginFailed}
@@ -79,7 +102,10 @@ export default function Logout() {
           <div className='w-full flex flex-row gap-3'>
             <button
               type='button'
-              onClick={() => router.push(callbackUrl)}
+              onClick={() => {
+                setIsOpenForm(false);
+                document.body.style.overflow = "auto";
+              }}
               className='w-full py-2 rounded-sm border border-black hover:shadow-md'
             >
               Cancel

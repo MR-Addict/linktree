@@ -2,7 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 
 import logo from "../../public/favicon.png";
-import Avatar from "./Avatar";
+import NavbarButtons from "./NavbarButtons";
 
 export default function Navbar() {
   return (
@@ -11,8 +11,8 @@ export default function Navbar() {
         <Image src={logo} width={35} height={35} alt='logo' />
         <h1 className='text-2xl font-bold italic'>Linktree</h1>
       </Link>
-      {/* @ts-expect-error Server Component */}
-      <Avatar />
+      {/* @ts-expect-error */}
+      <NavbarButtons />
     </div>
   );
 }

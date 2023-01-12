@@ -4,7 +4,7 @@ import { useState } from "react";
 
 import { AddPopup } from "../../app/components";
 
-export default function Addlink() {
+export default function NewlinkButton() {
   const [isOpenForm, setIsOpenForm] = useState(false);
 
   return (

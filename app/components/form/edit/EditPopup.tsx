@@ -84,7 +84,7 @@ export default function EditPopup({
   }
 
   return (
-    <div className='z-10 fixed top-0 left-0 frame w-full h-full flex flex-col gap-4 bg-black/40'>
+    <div className='z-10 fixed top-0 left-0 frame w-full h-full bg-black/40'>
       <div className='flex flex-col gap-3 bg-white p-5 md:p-10 rounded-md' ref={openFormRef}>
         <Popup popupData={popupData} isPopup={isPopup} setIsPopup={setIsPopup} />
         <h1 className='text-3xl font-bold'>Edit Link</h1>
