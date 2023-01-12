@@ -37,8 +37,13 @@ class Mongodb {
           },
         },
         {
+          $addFields: {
+            data_length: { $size: "$data" },
+          },
+        },
+        {
           $sort: {
-            "data.length": -1,
+            data_length: 1,
             "data.title": -1,
           },
         },
