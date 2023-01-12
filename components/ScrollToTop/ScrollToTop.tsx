@@ -6,23 +6,29 @@ import { IoIosArrowUp } from "react-icons/io";
 export default function ScrollToTop() {
   const [isVisiable, setIsVisiable] = useState(false);
 
-  const toggleVisiability = () => {
-    if (window.scrollY > 300) setIsVisiable(true);
-    else setIsVisiable(false);
-  };
-
-  const scrollToTop = () => {
-    window.scroll({ top: 0, behavior: "smooth" });
-  };
-
   useEffect(() => {
-    window.addEventListener("scroll", toggleVisiability);
-    return () => window.removeEventListener("scroll", toggleVisiability);
+    let lastScrollY = window.pageYOffset;
+
+    const updateIsScrollUp = () => {
+      const scrollY = window.pageYOffset;
+      if (Math.abs(scrollY - lastScrollY) < 100) return;
+      if (scrollY < lastScrollY && window.scrollY > 300) setIsVisiable(true);
+      else setIsVisiable(false);
+      lastScrollY = scrollY > 0 ? scrollY : 0;
+    };
+
+    const handleScroll = () => {
+      window.requestAnimationFrame(updateIsScrollUp);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
     <button
-      onClick={scrollToTop}
+      onClick={() => window.scroll({ top: 0, behavior: "smooth" })}
       className={`fixed bottom-5 md:bottom-10 right-5 md:right-10 duration-300 shadow-md bg-black text-white rounded-full p-2 ${
         isVisiable ? "scale-100" : "scale-0"
       }`}
