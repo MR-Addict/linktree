@@ -1,4 +1,4 @@
-# Linktree Clone ![Vercel](https://vercelbadge.vercel.app/api/MR-Addict/linktree)
+# Linktree
 
 ## 1. Preview
 

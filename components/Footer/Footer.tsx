@@ -38,7 +38,7 @@ export default function Footer() {
           <a href='https://vercel.com/' target='_blank' className='underline text-gray-800'>
             vercel
           </a>
-          <span>&</span>
+          <span>and</span>
           <a href='https://www.mongodb.com/atlas/database' target='_blank' className='underline text-gray-800'>
             mongodb
           </a>
