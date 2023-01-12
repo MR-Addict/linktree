@@ -21,12 +21,9 @@ export default function Footer() {
           </div>
         ))}
         <div className='flex flex-col gap-10 items-start'>
-          <Link
-            href='/'
-            className='text-2xl font-bold text-slate-800 italic flex flex-row items-end justify-center gap-2'
-          >
+          <Link href='/' className='flex flex-row items-end justify-center gap-2'>
             <Image src={logo} width={40} height={40} alt='logo' />
-            <h1>Linktree</h1>
+            <h1 className='text-2xl font-bold italic'>Linktree</h1>
           </Link>
         </div>
       </div>

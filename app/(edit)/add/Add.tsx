@@ -41,7 +41,7 @@ export default function Add() {
   return (
     <div className='frame w-full flex flex-col gap-4'>
       <Popup popupData={popupData} isPopup={isPopup} setIsPopup={setIsPopup} />
-      <h1 className='text-slate-800 text-3xl font-bold'>New Link</h1>
+      <h1 className='text-3xl font-bold'>New Link</h1>
       <Form formData={formData} setFormData={setFormData} handleSubmit={handleSubmit}>
         <Buttons isValid={isValid} />
       </Form>

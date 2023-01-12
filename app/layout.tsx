@@ -1,6 +1,6 @@
 import "./globals.css";
 
-import { Navbar, Footer, NextauthProvider } from "../components";
+import { Navbar, Footer, NextauthProvider, ScrollToTop } from "../components";
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -11,6 +11,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <Navbar />
           {children}
           <Footer />
+          <ScrollToTop />
         </NextauthProvider>
       </body>
     </html>

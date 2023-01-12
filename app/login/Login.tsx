@@ -40,7 +40,7 @@ export default function Logout() {
           isPopup={isLoginFailed}
           setIsPopup={setIsLoginFailed}
         />
-        <h1 className='text-slate-700 font-bold text-4xl text-center'>Login</h1>
+        <h1 className='font-bold text-4xl text-center'>Login</h1>
         <div className='flex flex-col gap-6'>
           <div className='flex flex-col w-full gap-1'>
             <label htmlFor='username' className='flex flex-row items-center gap-2 text-gray-700 font-semibold'>
