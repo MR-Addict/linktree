@@ -1,5 +1,6 @@
 "use client";
 
+import { useRouter } from "next/navigation";
 import { useState, useEffect, useRef } from "react";
 
 import Buttons from "./Buttons";
@@ -13,6 +14,7 @@ export default function EditPopup({
   initFormData: { _id: string; head: string; title: string; link: string; intro: string };
   setIsOpenForm: Function;
 }) {
+  const router = useRouter();
   const openFormRef = useRef<HTMLDivElement>(null);
 
   const [isPopup, setIsPopup] = useState(false);
@@ -52,10 +54,11 @@ export default function EditPopup({
     })
       .then((res) => res.json())
       .then((data) => {
-        if (!data.status) console.error(data.message);
         setIsValid(true);
         setIsPopup(true);
         setPopupData(data);
+        if (!data.status) console.error(data.message);
+        if (data.status) router.refresh();
       })
       .catch((error) => {
         setIsValid(true);
@@ -71,10 +74,11 @@ export default function EditPopup({
     })
       .then((res) => res.json())
       .then((data) => {
-        if (!data.status) console.error(data.message);
         setFormData({ _id: "", head: "", title: "", link: "", intro: "" });
         setIsPopup(true);
         setPopupData(data);
+        if (!data.status) console.error(data.message);
+        if (data.status) router.refresh();
       })
       .catch((error) => console.error(error));
   }

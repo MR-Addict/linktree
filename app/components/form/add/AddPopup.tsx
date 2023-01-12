@@ -1,5 +1,6 @@
 "use client";
 
+import { useRouter } from "next/navigation";
 import { useState, useEffect, useRef } from "react";
 
 import Buttons from "./Buttons";
@@ -7,6 +8,7 @@ import { Form } from "../components";
 import { Popup } from "../..";
 
 export default function AddPopup({ setIsOpenForm }: { setIsOpenForm: Function }) {
+  const router = useRouter();
   const openFormRef = useRef<HTMLDivElement>(null);
 
   const [isPopup, setIsPopup] = useState(false);
@@ -47,10 +49,11 @@ export default function AddPopup({ setIsOpenForm }: { setIsOpenForm: Function })
     })
       .then((res) => res.json())
       .then((data) => {
-        if (!data.status) console.error(data.message);
         setFormData({ head: "", title: "", link: "", intro: "" });
         setIsPopup(true);
         setPopupData(data);
+        if (!data.status) console.error(data.message);
+        if (data.status) router.refresh();
       })
       .catch((error) => console.error(error));
   }
