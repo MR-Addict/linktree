@@ -15,6 +15,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   const mongodb = new Mongodb();
   if (!req.body._id || !req.body.head || !req.body.title || !req.body.link || !req.body.intro)
     return res.json({ status: false, message: "Needed request body is empty!" });
+
   const response = await mongodb.updatelink(req.body._id, req.body.head, req.body.title, req.body.link, req.body.intro);
   return res.json(response);
 }
