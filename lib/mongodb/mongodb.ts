@@ -36,6 +36,12 @@ class Mongodb {
             data: { $push: "$$ROOT" },
           },
         },
+        {
+          $sort: {
+            "data.length": -1,
+            "data.title": -1,
+          },
+        },
       ]);
       let data = [];
       for await (const doc of result) data.push(doc);

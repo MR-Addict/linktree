@@ -27,7 +27,7 @@ export default function Form({
   }, []);
 
   return (
-    <form onSubmit={handleSubmit} className='flex flex-col gap-5'>
+    <form onSubmit={handleSubmit} className='flex flex-col gap-3 md:gap-5'>
       <div className='flex flex-col w-full gap-1'>
         <label htmlFor='head' className='flex flex-row items-center gap-1 text-gray-700 font-semibold'>
           <FaRegListAlt />
