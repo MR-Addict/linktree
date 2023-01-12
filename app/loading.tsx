@@ -10,7 +10,7 @@ function CardSkeleton() {
 export default function Loading() {
   return (
     <div className='frame w-full flex flex-col gap-3'>
-      <div className='h-5 w-16 bg-gray-200 rounded-md dark:bg-gray-700 animate-pulse'></div>
+      <div className='h-5 w-24 bg-gray-200 rounded-md dark:bg-gray-700 animate-pulse'></div>
       <div className='grid gap-7 grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'>
         <CardSkeleton />
         <CardSkeleton />
