@@ -9,7 +9,7 @@ export default async function Page() {
     return (
       <div className='frame flex flex-col gap-10 md:gap-16'>
         {links.data.map((item, index) => (
-          //  @ts-expect-error Server Component
+          //  @ts-expect-error
           <LinktreeCard key={index} head={item._id} links={item.data} />
         ))}
       </div>

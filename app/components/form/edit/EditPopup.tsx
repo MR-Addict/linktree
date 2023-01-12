@@ -1,21 +1,40 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 import Buttons from "./Buttons";
 import { Form } from "../components";
-import { Popup } from "../../components";
+import { Popup } from "../..";
 
-export default function Edit({
+export default function EditPopup({
   initFormData,
+  setIsOpenForm,
 }: {
   initFormData: { _id: string; head: string; title: string; link: string; intro: string };
+  setIsOpenForm: Function;
 }) {
+  const openFormRef = useRef<HTMLDivElement>(null);
+
   const [isPopup, setIsPopup] = useState(false);
   const [popupData, setPopupData] = useState({ status: true, message: "" });
 
   const [isValid, setIsValid] = useState(false);
   const [formData, setFormData] = useState(initFormData);
+
+  const handleClickOutside = (event: MouseEvent) => {
+    const target = event.target as HTMLElement;
+    if (openFormRef.current && !openFormRef.current.contains(target)) {
+      setIsOpenForm(false);
+      document.body.style.overflow = "auto";
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener("click", handleClickOutside);
+    return () => {
+      document.removeEventListener("click", handleClickOutside);
+    };
+  }, []);
 
   useEffect(() => {
     if (formData.head === "" || formData.title === "" || formData.link === "" || formData.intro === "")
@@ -61,12 +80,21 @@ export default function Edit({
   }
 
   return (
-    <div className='frame w-full flex flex-col gap-4'>
-      <Popup popupData={popupData} isPopup={isPopup} setIsPopup={setIsPopup} />
-      <h1 className='text-3xl font-bold'>Edit Link</h1>
-      <Form formData={formData} setFormData={setFormData} handleSubmit={handleSubmit}>
-        <Buttons isValid={isValid} handleDelete={handleDelete} />
-      </Form>
+    <div className='z-10 fixed top-0 left-0 frame w-full h-full flex flex-col gap-4 bg-black/40'>
+      <div className='bg-white p-5 md:p-10 rounded-md' ref={openFormRef}>
+        <Popup popupData={popupData} isPopup={isPopup} setIsPopup={setIsPopup} />
+        <h1 className='text-3xl font-bold'>Edit Link</h1>
+        <Form formData={formData} setFormData={setFormData} handleSubmit={handleSubmit}>
+          <Buttons
+            isValid={isValid}
+            handleDelete={handleDelete}
+            cancelCallback={() => {
+              setIsOpenForm(false);
+              document.body.style.overflow = "auto";
+            }}
+          />
+        </Form>
+      </div>
     </div>
   );
 }

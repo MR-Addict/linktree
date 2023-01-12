@@ -1,21 +1,14 @@
 "use client";
 
-import { useRouter } from "next/navigation";
-
-export default function Buttons({ isValid }: { isValid: boolean }) {
-  const router = useRouter();
-
+export default function Buttons({ isValid, cancelCallback }: { isValid: boolean; cancelCallback: Function }) {
   return (
     <div className='w-full flex flex-row justify-end gap-3'>
       <button
         type='button'
-        onClick={() => {
-          router.push("/");
-          router.refresh();
-        }}
+        onClick={() => cancelCallback()}
         className='py-2 px-4 rounded-sm border border-black hover:shadow-md'
       >
-        Return
+        Cancel
       </button>
       {isValid ? (
         <button

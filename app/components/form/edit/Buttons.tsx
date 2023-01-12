@@ -5,9 +5,11 @@ import { useRouter } from "next/navigation";
 export default function Buttons({
   isValid,
   handleDelete,
+  cancelCallback,
 }: {
   isValid: boolean;
   handleDelete: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
+  cancelCallback: Function;
 }) {
   const router = useRouter();
 
@@ -23,13 +25,10 @@ export default function Buttons({
       <div className='flex flex-row gap-3'>
         <button
           type='button'
-          onClick={() => {
-            router.push("/");
-            router.refresh();
-          }}
+          onClick={() => cancelCallback()}
           className='py-2 px-4 rounded-sm border border-black hover:shadow-md'
         >
-          Return
+          Cancel
         </button>
         {isValid ? (
           <button

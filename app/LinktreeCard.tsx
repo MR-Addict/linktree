@@ -1,20 +1,8 @@
-import Link from "next/link";
-import { AiFillEdit } from "react-icons/ai";
 import { unstable_getServerSession } from "next-auth";
 
+import { EditButton } from "./components";
 import { linktreeItemType } from "./config";
 import { authOptions } from "../pages/api/auth/[...nextauth]";
-
-function Edit({ link }: { link: linktreeItemType }) {
-  return (
-    <Link
-      href={{ pathname: "/edit", query: { ...link, _id: link._id.toString() } }}
-      className='scale-0 translate-x-0 translate-y-0 group-hover:scale-100 group-hover:translate-x-3 group-hover:-translate-y-3 duration-100 absolute right-0 top-0 p-2 rounded-full border border-black bg-black text-white hover:bg-white hover:text-black'
-    >
-      <AiFillEdit />
-    </Link>
-  );
-}
 
 export default async function LinktreeCard({ head, links }: { head: string; links: linktreeItemType[] }) {
   const session = await unstable_getServerSession(authOptions);
@@ -30,7 +18,7 @@ export default async function LinktreeCard({ head, links }: { head: string; link
           >
             <div className='w-full flex flex-col gap-3'>
               <h1 className='font-bold text-2xl text-center'>{item.title}</h1>
-              {session && <Edit link={item} />}
+              {session && <EditButton link={{ ...item, _id: item._id.toString() }} />}
               <div className='w-fit'>{item.intro}</div>
             </div>
             <a
