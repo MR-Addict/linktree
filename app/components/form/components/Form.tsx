@@ -45,7 +45,7 @@ export default function Form({
           placeholder='Category'
           value={formData.head}
           onChange={(e) => setFormData({ ...formData, [e.target.name]: e.target.value })}
-          className='p-2 rounded-sm border dark:bg-gray-300 border-black outline-none'
+          className='p-2 rounded-sm border border-black outline-none'
         />
         <datalist id='head'>
           {availableOptions.map((item, index) => (
@@ -70,7 +70,7 @@ export default function Form({
           placeholder='Title'
           value={formData.title}
           onChange={(e) => setFormData({ ...formData, [e.target.name]: e.target.value })}
-          className='p-2 rounded-sm border dark:bg-gray-300 border-black outline-none'
+          className='p-2 rounded-sm border border-black outline-none'
         />
       </div>
 
@@ -90,7 +90,7 @@ export default function Form({
           placeholder='Link'
           value={formData.link}
           onChange={(e) => setFormData({ ...formData, [e.target.name]: e.target.value })}
-          className='p-2 rounded-sm border dark:bg-gray-300 border-black outline-none'
+          className='p-2 rounded-sm border border-black outline-none'
         />
       </div>
 
@@ -109,7 +109,7 @@ export default function Form({
           placeholder='Introduction'
           value={formData.intro}
           onChange={(e) => setFormData({ ...formData, [e.target.name]: e.target.value })}
-          className='h-40 p-2 rounded-sm border dark:bg-gray-300 border-black outline-none'
+          className='h-40 p-2 rounded-sm border border-black outline-none'
         />
       </div>
       {children}

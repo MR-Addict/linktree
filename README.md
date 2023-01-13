@@ -8,12 +8,21 @@
 
 - [x] Next.js 13
 - [ ] Turbopack
+- [x] Prettier
 - [x] Nextauth.js
 - [x] Typescript
 - [x] Tailwindcss
 - [x] Mongodb Altas
 
-## 3. Development
+## 3. Features
+
+- [x] Darkmode
+- [x] Login
+- [x] Edit/Add/Delete
+- [x] ScrollToTop
+- [x] Popup animation
+
+## 4. Development
 
 Install packages:
 
@@ -27,7 +36,7 @@ Run dev:
 npm run dev
 ```
 
-## 4. Deploy
+## 5. Deploy
 
 Add `.env` file:
 
