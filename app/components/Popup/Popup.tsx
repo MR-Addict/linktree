@@ -15,18 +15,18 @@ export default function Popup({
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsPopup(false);
-    }, 3000);
+    }, 2000);
     return () => clearTimeout(timer);
   }, [popupData]);
 
   return (
     <div
-      className={`fixed -top-10 left-[50%] translate-x-[-50%] duration-500 ${
-        isPopup ? "translate-y-24" : "translate-y-0"
+      className={`z-10 fixed -top-10 left-[50%] translate-x-[-50%] duration-500 ${
+        isPopup ? "translate-y-32" : "translate-y-0"
       }`}
     >
       {popupData.status ? (
-        <div className='bg-green-100 px-4 py-1 rounded-sm flex flex-row items-center gap-2 w-fit'>
+        <div className='bg-green-100 border border-green-900 px-4 py-1 rounded-sm flex flex-row items-center gap-2 w-fit'>
           <h1 className='font-semibold whitespace-nowrap text-green-900'>{popupData.message}</h1>
           <button
             type='button'
@@ -39,7 +39,7 @@ export default function Popup({
           </button>
         </div>
       ) : (
-        <div className='bg-red-100 px-4 py-1 rounded-sm flex flex-row items-center gap-2 w-fit'>
+        <div className='bg-red-100 border border-red-900 px-4 py-1 rounded-sm flex flex-row items-center gap-2 w-fit'>
           <h1 className='font-semibold whitespace-nowrap text-red-900'>{popupData.message}</h1>
           <button
             type='button'
