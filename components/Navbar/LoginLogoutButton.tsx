@@ -20,7 +20,7 @@ export default function LoginLogoutButton({ isNeedLogin }: { isNeedLogin: boolea
         >
           Login
         </button>
-        {isOpenForm && <Login setIsOpenForm={setIsOpenForm} />}
+        <Login isOpenForm={isOpenForm} setIsOpenForm={setIsOpenForm} />
       </div>
     );
   } else {

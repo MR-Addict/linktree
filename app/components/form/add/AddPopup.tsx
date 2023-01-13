@@ -1,15 +1,14 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 
 import Buttons from "./Buttons";
 import { Form } from "../components";
 import { Popup } from "../..";
 
-export default function AddPopup({ setIsOpenForm }: { setIsOpenForm: Function }) {
+export default function AddPopup({ isOpenForm, setIsOpenForm }: { isOpenForm: boolean; setIsOpenForm: Function }) {
   const router = useRouter();
-  const openFormRef = useRef<HTMLDivElement>(null);
 
   const [isPopup, setIsPopup] = useState(false);
   const [popupData, setPopupData] = useState({ status: true, message: "" });
@@ -17,21 +16,6 @@ export default function AddPopup({ setIsOpenForm }: { setIsOpenForm: Function })
   const [isValid, setIsValid] = useState(false);
 
   const [formData, setFormData] = useState({ head: "", title: "", link: "", intro: "" });
-
-  const handleClickOutside = (event: MouseEvent) => {
-    const target = event.target as HTMLElement;
-    if (openFormRef.current && !openFormRef.current.contains(target)) {
-      setIsOpenForm(false);
-      document.body.style.overflow = "auto";
-    }
-  };
-
-  useEffect(() => {
-    document.addEventListener("click", handleClickOutside);
-    return () => {
-      document.removeEventListener("click", handleClickOutside);
-    };
-  }, []);
 
   useEffect(() => {
     if (formData.head === "" || formData.title === "" || formData.link === "" || formData.intro === "")
@@ -59,9 +43,13 @@ export default function AddPopup({ setIsOpenForm }: { setIsOpenForm: Function })
   }
 
   return (
-    <div className='z-10 fixed top-0 left-0 frame w-full h-full bg-black/40'>
-      <div className='flex flex-col gap-3 bg-white p-5 md:p-10 rounded-md' ref={openFormRef}>
-        <Popup popupData={popupData} isPopup={isPopup} setIsPopup={setIsPopup} />
+    <div className={`${isOpenForm ? "scale-100" : "scale-0"} z-10 fixed top-0 left-0 frame w-full h-full bg-black/40`}>
+      <Popup popupData={popupData} isPopup={isPopup} setIsPopup={setIsPopup} />
+      <div
+        className={`${
+          isOpenForm ? "scale-100" : "scale-0"
+        } duration-200 flex flex-col gap-3 bg-white p-5 md:p-10 rounded-md`}
+      >
         <h1 className='text-3xl font-bold'>New Link</h1>
         <Form formData={formData} setFormData={setFormData} handleSubmit={handleSubmit}>
           <Buttons

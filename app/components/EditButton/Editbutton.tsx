@@ -21,7 +21,7 @@ export default function EditButton({ link }: { link: linktreeItemType }) {
         <AiFillEdit />
       </button>
       {/* @ts-expect-error */}
-      {isOpenForm && <EditPopup initFormData={link} setIsOpenForm={setIsOpenForm} />}
+      <EditPopup initFormData={link} isOpenForm={isOpenForm} setIsOpenForm={setIsOpenForm} />
     </>
   );
 }

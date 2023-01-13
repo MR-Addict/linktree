@@ -1,31 +1,14 @@
 "use client";
 
 import { signIn } from "next-auth/react";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import { FaUserAlt, FaLock } from "react-icons/fa";
 
 import { Popup } from "../";
 
-export default function Login({ setIsOpenForm }: { setIsOpenForm: Function }) {
-  const openFormRef = useRef<HTMLFormElement>(null);
-
+export default function Login({ isOpenForm, setIsOpenForm }: { isOpenForm: boolean; setIsOpenForm: Function }) {
   const [isLoginFailed, setIsLoginFailed] = useState(false);
   const [formData, setFormData] = useState({ username: "", password: "" });
-
-  const handleClickOutside = (event: MouseEvent) => {
-    const target = event.target as HTMLElement;
-    if (openFormRef.current && !openFormRef.current.contains(target)) {
-      setIsOpenForm(false);
-      document.body.style.overflow = "auto";
-    }
-  };
-
-  useEffect(() => {
-    document.addEventListener("click", handleClickOutside);
-    return () => {
-      document.removeEventListener("click", handleClickOutside);
-    };
-  }, []);
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -51,17 +34,22 @@ export default function Login({ setIsOpenForm }: { setIsOpenForm: Function }) {
   }, [isLoginFailed]);
 
   return (
-    <div className='z-10 fixed top-0 left-0 frame w-full h-full flex flex-col items-center justify-center bg-black/40'>
+    <div
+      className={`${
+        isOpenForm ? "scale-100" : "scale-0"
+      } z-10 fixed top-0 left-0 frame w-full h-full flex flex-col items-center justify-center bg-black/40`}
+    >
+      <Popup
+        popupData={{ status: false, message: "Usernamer or Password incorrect!" }}
+        isPopup={isLoginFailed}
+        setIsPopup={setIsLoginFailed}
+      />
       <form
         onSubmit={handleSubmit}
-        ref={openFormRef}
-        className='w-full md:max-w-xs flex flex-col gap-4 rounded-md bg-white p-5 md:p-10'
+        className={`${
+          isOpenForm ? "scale-100" : "scale-0"
+        } duration-200 w-full md:max-w-xs flex flex-col gap-4 rounded-md bg-white p-5 md:p-10`}
       >
-        <Popup
-          popupData={{ status: false, message: "Usernamer or Password incorrect!" }}
-          isPopup={isLoginFailed}
-          setIsPopup={setIsLoginFailed}
-        />
         <h1 className='font-bold text-4xl text-center'>Login</h1>
         <div className='flex flex-col gap-6'>
           <div className='flex flex-col w-full gap-1'>

@@ -18,7 +18,7 @@ export default function NewlinkButton() {
       >
         New Link
       </button>
-      {isOpenForm && <AddPopup setIsOpenForm={setIsOpenForm} />}
+      <AddPopup isOpenForm={isOpenForm} setIsOpenForm={setIsOpenForm} />
     </>
   );
 }
