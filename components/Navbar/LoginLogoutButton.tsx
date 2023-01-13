@@ -16,7 +16,7 @@ export default function LoginLogoutButton({ isNeedLogin }: { isNeedLogin: boolea
             setIsOpenForm(true);
             document.body.style.overflow = "hidden";
           }}
-          className='py-1 px-2 md:px-4 rounded-sm border border-black hover:shadow-md'
+          className='py-1 px-2 md:px-4 rounded-sm border border-black bg-black text-white hover:bg-white hover:text-black'
         >
           Login
         </button>
@@ -28,7 +28,7 @@ export default function LoginLogoutButton({ isNeedLogin }: { isNeedLogin: boolea
       <button
         type='button'
         onClick={() => signOut()}
-        className='py-1 px-2 md:px-4 border rounded-sm bg-black text-white hover:bg-white hover:text-black border-black'
+        className='py-1 px-2 md:px-4 rounded-sm border border-black bg-black text-white hover:bg-white hover:text-black'
       >
         Logout
       </button>

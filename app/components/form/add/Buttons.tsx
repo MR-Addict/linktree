@@ -6,7 +6,7 @@ export default function Buttons({ isValid, cancelCallback }: { isValid: boolean;
       <button
         type='button'
         onClick={() => cancelCallback()}
-        className='py-2 px-4 rounded-sm border border-black hover:shadow-md'
+        className='py-2 px-4 rounded-sm border bg-white border-black hover:shadow-md'
       >
         Cancel
       </button>

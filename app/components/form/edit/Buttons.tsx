@@ -18,7 +18,7 @@ export default function Buttons({
       <button
         type='button'
         onClick={handleDelete}
-        className='py-2 px-4 rounded-sm border text-white bg-red-600 hover:shadow-md'
+        className='py-2 px-4 rounded-sm text-white bg-red-600 hover:shadow-md'
       >
         Delete
       </button>
@@ -26,7 +26,7 @@ export default function Buttons({
         <button
           type='button'
           onClick={() => cancelCallback()}
-          className='py-2 px-4 rounded-sm border border-black hover:shadow-md'
+          className='py-2 px-4 rounded-sm border bg-white border-black hover:shadow-md'
         >
           Cancel
         </button>

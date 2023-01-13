@@ -29,7 +29,10 @@ export default function Form({
   return (
     <form onSubmit={handleSubmit} className='flex flex-col gap-3 md:gap-5'>
       <div className='flex flex-col w-full gap-1'>
-        <label htmlFor='head' className='flex flex-row items-center gap-1 text-gray-700 font-semibold'>
+        <label
+          htmlFor='head'
+          className='flex flex-row items-center gap-1 dark:text-gray-300 text-gray-700 font-semibold'
+        >
           <FaRegListAlt />
           <span>Category</span>
         </label>
@@ -42,7 +45,7 @@ export default function Form({
           placeholder='Category'
           value={formData.head}
           onChange={(e) => setFormData({ ...formData, [e.target.name]: e.target.value })}
-          className='p-2 rounded-sm border border-black outline-none'
+          className='p-2 rounded-sm border dark:bg-gray-300 border-black outline-none'
         />
         <datalist id='head'>
           {availableOptions.map((item, index) => (
@@ -52,7 +55,10 @@ export default function Form({
       </div>
 
       <div className='flex flex-col w-full gap-1'>
-        <label htmlFor='title' className='flex flex-row items-center gap-1 text-gray-700 font-semibold'>
+        <label
+          htmlFor='title'
+          className='flex flex-row items-center gap-1 dark:text-gray-300 text-gray-700 font-semibold'
+        >
           <FaRegFlag />
           <span>Title</span>
         </label>
@@ -64,12 +70,15 @@ export default function Form({
           placeholder='Title'
           value={formData.title}
           onChange={(e) => setFormData({ ...formData, [e.target.name]: e.target.value })}
-          className='p-2 rounded-sm border border-black outline-none'
+          className='p-2 rounded-sm border dark:bg-gray-300 border-black outline-none'
         />
       </div>
 
       <div className='flex flex-col w-full gap-1'>
-        <label htmlFor='Link' className='flex flex-row items-center gap-1 text-gray-700 font-semibold'>
+        <label
+          htmlFor='Link'
+          className='flex flex-row items-center gap-1 dark:text-gray-300 text-gray-700 font-semibold'
+        >
           <FaShareSquare />
           <span>Link</span>
         </label>
@@ -81,12 +90,15 @@ export default function Form({
           placeholder='Link'
           value={formData.link}
           onChange={(e) => setFormData({ ...formData, [e.target.name]: e.target.value })}
-          className='p-2 rounded-sm border border-black outline-none'
+          className='p-2 rounded-sm border dark:bg-gray-300 border-black outline-none'
         />
       </div>
 
       <div className='flex flex-col w-full gap-1'>
-        <label htmlFor='Link' className='flex flex-row items-center gap-1 text-gray-700 font-semibold'>
+        <label
+          htmlFor='Link'
+          className='flex flex-row items-center gap-1 dark:text-gray-300 text-gray-700 font-semibold'
+        >
           <FaEdit />
           <span>Introduction</span>
         </label>
@@ -97,7 +109,7 @@ export default function Form({
           placeholder='Introduction'
           value={formData.intro}
           onChange={(e) => setFormData({ ...formData, [e.target.name]: e.target.value })}
-          className='h-40 p-2 rounded-sm border border-black outline-none'
+          className='h-40 p-2 rounded-sm border dark:bg-gray-300 border-black outline-none'
         />
       </div>
       {children}

@@ -75,9 +75,9 @@ export default function EditPopup({
       <div
         className={`${
           isOpenForm ? "scale-100" : "scale-0"
-        } duration-200 flex flex-col gap-3 bg-white p-5 md:p-10 rounded-md`}
+        } duration-200 flex flex-col gap-3 dark:bg-dark-light bg-white p-5 md:p-10 rounded-md`}
       >
-        <h1 className='text-3xl font-bold'>Edit Link</h1>
+        <h1 className='dark:text-white text-3xl font-bold'>Edit Link</h1>
         <Form formData={formData} setFormData={setFormData} handleSubmit={handleSubmit}>
           <Buttons
             isValid={isValid}
