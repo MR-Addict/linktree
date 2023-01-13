@@ -1,14 +1,12 @@
 "use client";
 
 import { signIn } from "next-auth/react";
-import { useRouter } from "next/navigation";
 import { useState, useEffect, useRef } from "react";
 import { FaUserAlt, FaLock } from "react-icons/fa";
 
 import { Popup } from "../";
 
 export default function Login({ setIsOpenForm }: { setIsOpenForm: Function }) {
-  const router = useRouter();
   const openFormRef = useRef<HTMLFormElement>(null);
 
   const [isLoginFailed, setIsLoginFailed] = useState(false);
@@ -36,11 +34,12 @@ export default function Login({ setIsOpenForm }: { setIsOpenForm: Function }) {
       password: formData.password,
       redirect: false,
     });
-    if (res && !res.ok) setIsLoginFailed(true);
-    else {
+    if (res && !res.ok) {
+      setIsLoginFailed(true);
+    } else {
       setIsOpenForm(false);
       document.body.style.overflow = "auto";
-      router.refresh();
+      location.reload();
     }
   };
 

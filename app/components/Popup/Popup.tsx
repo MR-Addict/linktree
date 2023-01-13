@@ -22,7 +22,7 @@ export default function Popup({
   return (
     <div
       className={`fixed -top-10 left-[50%] translate-x-[-50%] duration-500 ${
-        isPopup ? "translate-y-20" : "translate-y-0"
+        isPopup ? "translate-y-24" : "translate-y-0"
       }`}
     >
       {popupData.status ? (
