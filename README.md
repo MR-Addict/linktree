@@ -29,6 +29,14 @@ npm run dev
 
 ## 4. Deploy
 
+Add `.env` file:
+
+```env
+NEXTAUTH_SECRET="8GYrPDgw9wj5213UHWIm"
+NEXTAUTH_URL="https://your.domain.com/"
+MONGODB_URI="mongodb://username:password@mongodb0.example.com:27017/"
+```
+
 Install packages:
 
 ```bash
