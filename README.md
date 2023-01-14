@@ -26,7 +26,7 @@
 
 - [ ] Cannot use bcrypt for hash and compare password
 - [ ] Cannot put Popup component in root component folder, strange bug
-- [ ] Cannot use turbopack, turbo really got a lot of bugs needed to fix
+- [ ] Cannot use turbopack, turbopack really got a lot of bugs needed to fix
 - [ ] Cannot loading other route loading component, only root loading is usable
 
 ## 5. Development
