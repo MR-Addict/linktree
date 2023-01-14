@@ -9,7 +9,7 @@ import Darkmode from "./Darkmode";
 
 export default function Footer() {
   return (
-    <footer className='dark:bg-dark-light w-full frame bg-gray-100 flex flex-col gap-10 md:gap-20 items-start justify-between'>
+    <footer className='dark:bg-gray-700 w-full frame bg-gray-100 flex flex-col gap-10 md:gap-20 items-start justify-between'>
       <div className='hidden md:flex w-full flex-row items-start justify-between'>
         {links.map((item1, index1) => (
           <div key={index1} className='flex flex-col gap-5'>

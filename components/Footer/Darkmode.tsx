@@ -25,7 +25,7 @@ export default function Darkmode() {
         onChange={handleChange}
         name='theme'
         value={themeMode}
-        className='dark:bg-dark dark:text-white border outline-none border-black px-1 rounded-sm'
+        className='dark:bg-gray-900 dark:text-white border outline-none border-black px-1 rounded-sm'
       >
         <option value='light'>Light</option>
         <option value='dark'>Dark</option>

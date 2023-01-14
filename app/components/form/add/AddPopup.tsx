@@ -48,7 +48,7 @@ export default function AddPopup({ isOpenForm, setIsOpenForm }: { isOpenForm: bo
       <div
         className={`${
           isOpenForm ? "scale-100" : "scale-0"
-        } duration-200 flex flex-col gap-3 dark:bg-dark-light bg-white p-5 md:p-10 rounded-md`}
+        } duration-200 flex flex-col gap-3 dark:bg-gray-700 bg-white p-5 md:p-10 rounded-md`}
       >
         <h1 className='dark:text-white text-3xl font-bold'>New Link</h1>
         <Form formData={formData} setFormData={setFormData} handleSubmit={handleSubmit}>

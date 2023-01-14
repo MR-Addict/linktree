@@ -48,7 +48,7 @@ export default function Login({ isOpenForm, setIsOpenForm }: { isOpenForm: boole
         onSubmit={handleSubmit}
         className={`${
           isOpenForm ? "scale-100" : "scale-0"
-        } duration-200 dark:bg-dark-light w-full md:max-w-xs flex flex-col gap-4 rounded-md bg-white p-5 md:p-10`}
+        } duration-200 dark:bg-gray-700 w-full md:max-w-xs flex flex-col gap-4 rounded-md bg-white p-5 md:p-10`}
       >
         <h1 className='dark:text-white font-bold text-4xl text-center'>Login</h1>
         <div className='flex flex-col gap-6'>

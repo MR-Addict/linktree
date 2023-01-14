@@ -13,7 +13,7 @@ async function LinktreeCard({ links }: { links: linktreeItemType[] }) {
       {links.map((item, index) => (
         <div
           key={index}
-          className='dark:bg-dark-light dark:border-gray-700 flex flex-col items-center justify-between gap-3 border border-gray-300 rounded-md py-7 px-5 shadow-md hover:shadow-2xl duration-300 group relative cursor-pointer'
+          className='dark:bg-gray-700 dark:border-gray-700 flex flex-col items-center justify-between gap-3 border border-gray-300 rounded-md py-7 px-5 shadow-md hover:shadow-2xl duration-300 group relative cursor-pointer'
         >
           <div className='w-full flex flex-col gap-3'>
             <h1 className='dark:text-white font-bold text-2xl text-center'>{item.title}</h1>
