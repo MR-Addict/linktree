@@ -17,7 +17,7 @@ export default function Form({
   const [availableOptions, setAvailableOptions] = useState([]);
 
   useEffect(() => {
-    fetch("/api/linktree/heads")
+    fetch("/api/linktree/getheads")
       .then((res) => res.json())
       .then((data) => {
         if (data.status) setAvailableOptions(data.data);

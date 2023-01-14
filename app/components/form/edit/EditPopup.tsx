@@ -33,7 +33,7 @@ export default function EditPopup({
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     setIsValid(false);
-    fetch("/api/linktree/update", {
+    fetch("/api/linktree/updatelink", {
       method: "POST",
       body: new URLSearchParams(formData),
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
@@ -53,7 +53,7 @@ export default function EditPopup({
   }
 
   async function handleDelete() {
-    fetch("/api/linktree/delete", {
+    fetch("/api/linktree/deletelink", {
       method: "POST",
       body: new URLSearchParams({ _id: formData._id }),
       headers: { "Content-Type": "application/x-www-form-urlencoded" },

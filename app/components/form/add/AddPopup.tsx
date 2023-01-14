@@ -26,7 +26,7 @@ export default function AddPopup({ isOpenForm, setIsOpenForm }: { isOpenForm: bo
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     setIsValid(false);
-    fetch("/api/linktree/insert", {
+    fetch("/api/linktree/insertlink", {
       method: "POST",
       body: new URLSearchParams(formData),
       headers: { "Content-Type": "application/x-www-form-urlencoded" },

@@ -1,8 +1,8 @@
 import { unstable_getServerSession } from "next-auth";
 
 import { Mongodb } from "../lib/mongodb";
-import { EditButton } from "./components";
 import { linktreeItemType } from "./config";
+import { EditButton } from "./components";
 import { authOptions } from "../pages/api/auth/[...nextauth]";
 
 async function LinktreeCard({ links }: { links: linktreeItemType[] }) {
@@ -42,7 +42,7 @@ export default async function Page() {
       <div className='frame flex flex-col gap-10 md:gap-16'>
         {links.data.map((item, index) => (
           <div key={index} className='flex flex-col gap-3'>
-            <h1 className='dark:text-white text-3xl font-bold w-fit'>{item._id}</h1>
+            <span className='dark:text-white text-3xl font-bold'>{item._id}</span>
             {/* @ts-expect-error */}
             <LinktreeCard links={item.data} />
           </div>
