@@ -22,7 +22,14 @@
 - [x] ScrollToTop
 - [x] Popup animation
 
-## 4. Development
+## 4. Bugs
+
+- [ ] Cannot use bcrypt for hash and compare password
+- [ ] Cannot Put Popup component in root directory component
+- [ ] Cannot use turbopack, turbo has a lot of bugs needed to fix
+- [ ] Loading component is appropriate, only root loading file is usable
+
+## 5. Development
 
 Install packages:
 
@@ -36,7 +43,7 @@ Run dev:
 npm run dev
 ```
 
-## 5. Deploy
+## 6. Deploy
 
 Add `.env` file:
 
