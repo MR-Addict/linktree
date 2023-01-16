@@ -22,11 +22,22 @@ export const authOptions: NextAuthOptions = {
         };
         const mongodb = new Mongodb();
         const user = await mongodb.finduser(username, password);
-        if (user.status && user.data) return user.data;
+        if (user.status && user.data) return user.data as any;
         else return null;
       },
     }),
   ],
+  callbacks: {
+    jwt: async ({ token, user }) => {
+      user && (token.user = user);
+      return token;
+    },
+    session: async ({ session, token }) => {
+      // @ts-expect-error
+      session.user = token.user;
+      return session;
+    },
+  },
 };
 
 export default NextAuth(authOptions);

@@ -1,4 +1,4 @@
-import { unstable_getServerSession } from "next-auth";
+import { unstable_getServerSession } from "next-auth/next";
 
 import { Mongodb } from "../lib/mongodb";
 import { linktreeItemType } from "./config";
@@ -7,6 +7,8 @@ import { authOptions } from "../pages/api/auth/[...nextauth]";
 
 async function LinktreeCard({ links }: { links: linktreeItemType[] }) {
   const session = await unstable_getServerSession(authOptions);
+
+  console.log(session);
 
   return (
     <div className='grid gap-7 grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'>

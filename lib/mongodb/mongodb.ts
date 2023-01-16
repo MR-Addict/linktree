@@ -5,10 +5,17 @@ class Mongodb {
   async finduser(username: string, password: string) {
     try {
       const client = await clientPromise;
-      const db = client.db("linktree");
-      const result = await db.collection("user").findOne({ $and: [{ username }, { password }] });
-      if (!result) return { status: false, message: "Username or Password incorrect!" };
-      return { status: true, data: { id: result._id.toString(), username: result.username } };
+      const db = client.db("user");
+      const user = await db
+        .collection("user")
+        .aggregate([
+          { $match: { username, password } },
+          { $addFields: { _id: { $convert: { input: "$_id", to: "string" } } } },
+        ])
+        .next();
+
+      if (!user) return { status: false, message: "Username or Password incorrect!" };
+      return { status: true, data: user };
     } catch (error) {
       return { status: false, message: "Cannot establish connection with mongodb!" };
     }
