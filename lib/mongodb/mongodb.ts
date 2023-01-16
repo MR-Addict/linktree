@@ -25,10 +25,20 @@ class Mongodb {
     }
   }
 
-  async getlinks() {
+  async getlinks(head?: string) {
     try {
       const client = await clientPromise;
       const db = client.db("linktree");
+
+      if (head && head !== "") {
+        const result = db
+          .collection("links")
+          .aggregate([{ $match: { head } }, { $addFields: { _id: { $convert: { input: "$_id", to: "string" } } } }]);
+        let data = [];
+        for await (const doc of result) data.push(doc);
+        return { staus: true, data: data };
+      }
+
       const result = db.collection("links").aggregate([
         {
           $group: {
