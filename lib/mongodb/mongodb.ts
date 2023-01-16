@@ -38,6 +38,15 @@ class Mongodb {
         },
         {
           $addFields: {
+            data: {
+              $map: {
+                input: "$data",
+                as: "docs",
+                in: {
+                  $mergeObjects: ["$$docs", { _id: { $convert: { input: "$$docs._id", to: "string" } } }],
+                },
+              },
+            },
             data_length: { $size: "$data" },
           },
         },

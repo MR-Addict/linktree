@@ -17,7 +17,7 @@ async function LinktreeCard({ links }: { links: linktreeItemType[] }) {
         >
           <div className='w-full flex flex-col gap-3'>
             <h1 className='dark:text-white font-bold text-2xl text-center'>{item.title}</h1>
-            {session && <EditButton link={{ ...item, _id: item._id.toString() }} />}
+            {session && <EditButton link={item} />}
             <div className='dark:text-gray-300 w-fit'>{item.intro}</div>
           </div>
           <a

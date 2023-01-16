@@ -9,6 +9,8 @@ import EditPopup from "../form/edit/EditPopup";
 export default function EditButton({ link }: { link: linktreeItemType }) {
   const [isOpenForm, setIsOpenForm] = useState(false);
 
+  console.log(link);
+
   return (
     <>
       <button
