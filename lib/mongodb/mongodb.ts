@@ -1,4 +1,6 @@
+import { compare } from "bcryptjs";
 import { ObjectId } from "mongodb";
+
 import clientPromise from "./clientPromise";
 
 class Mongodb {
@@ -6,18 +8,22 @@ class Mongodb {
     try {
       const client = await clientPromise;
       const db = client.db("user");
+
       const user = await db
         .collection("user")
-        .aggregate([
-          { $match: { username, password } },
-          { $addFields: { _id: { $convert: { input: "$_id", to: "string" } } } },
-        ])
+        .aggregate([{ $match: { username } }, { $addFields: { _id: { $convert: { input: "$_id", to: "string" } } } }])
         .next();
 
-      if (!user) return { status: false, message: "Username or Password incorrect!" };
+      if (!user) return { status: false, message: "Username not exists" };
+
+      const isMatched = await compare(password, user.password);
+      if (!isMatched) return { status: false, message: "Password incorrect!" };
+
+      delete user.password;
       return { status: true, data: user };
     } catch (error) {
-      return { status: false, message: "Cannot establish connection with mongodb!" };
+      console.error(error);
+      return { status: false, message: "Error occurred when communicate with mongodb!" };
     }
   }
 

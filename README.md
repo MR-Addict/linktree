@@ -24,7 +24,7 @@
 
 ## 4. Bugs
 
-- [ ] Cannot use bcrypt for hash and compare password
+- [x] Cannot use bcrypt for hash and compare password(replace with bcryptjs)
 - [ ] Cannot put Popup component in root component folder, strange bug
 - [ ] Cannot use turbopack, turbopack really got a lot of bugs needed to fix
 - [ ] Cannot loading other route loading component, only root loading is usable
