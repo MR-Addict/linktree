@@ -15,8 +15,8 @@ export default async function Page({ searchParams: { tab } }: { searchParams: { 
   if (!heads.data?.includes(currentTab)) notFound();
 
   return (
-    <div className='frame flex flex-col gap-3'>
-      <div className='flex flex-row gap-3'>
+    <div className='w-full frame flex flex-col gap-5'>
+      <div className='flex flex-col md:flex-row gap-1 md:gap-3'>
         {heads.data.map((item) => (
           <Link
             key={item}
