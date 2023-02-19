@@ -1,7 +1,5 @@
 "use client";
 
-import { useRouter } from "next/navigation";
-
 export default function Buttons({
   isValid,
   handleDelete,
@@ -11,8 +9,6 @@ export default function Buttons({
   handleDelete: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
   cancelCallback: Function;
 }) {
-  const router = useRouter();
-
   return (
     <div className='w-full flex flex-row justify-between gap-3'>
       <button

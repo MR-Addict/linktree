@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 
 import Buttons from "./Buttons";
 import { Form } from "../components";
-import { Popup } from "../..";
+import Popup from "../../../../components/Popup/Popup";
 
 export default function AddPopup({ isOpenForm, setIsOpenForm }: { isOpenForm: boolean; setIsOpenForm: Function }) {
   const router = useRouter();

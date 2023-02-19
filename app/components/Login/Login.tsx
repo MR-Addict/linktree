@@ -4,7 +4,7 @@ import { signIn } from "next-auth/react";
 import { useState, useEffect } from "react";
 import { FaUserAlt, FaLock } from "react-icons/fa";
 
-import { Popup } from "../";
+import Popup from "../../../components/Popup/Popup";
 
 export default function Login({ isOpenForm, setIsOpenForm }: { isOpenForm: boolean; setIsOpenForm: Function }) {
   const [isLoginFailed, setIsLoginFailed] = useState(false);
